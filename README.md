@@ -45,10 +45,10 @@ This project is developed by me during Project week in Masai School.
 #changing the server port
 server.port=8007
 #db specific properties
-spring.datasource.url=jdbc:mysql://localhost:3306/flashgodb
+spring.datasource.url=jdbc:mysql://localhost:3306/productsdb
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.password=0007
 #ORM s/w specific properties
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
