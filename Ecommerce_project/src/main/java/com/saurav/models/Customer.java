@@ -1,9 +1,13 @@
 package com.saurav.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -32,5 +36,10 @@ public class Customer {
 	@NotNull
 	@Email
 	private String email;
+	
+	private String role = "USER";
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
+	List<Order> orders;
 
 }

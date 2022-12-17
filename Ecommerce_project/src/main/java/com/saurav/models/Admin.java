@@ -32,5 +32,7 @@ public class Admin {
 	@NotNull
 	@Email
 	private String email;
+	
+	private String role = "ADMIN";
 
 }
