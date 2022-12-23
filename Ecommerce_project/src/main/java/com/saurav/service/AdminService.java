@@ -23,9 +23,9 @@ public interface AdminService {
 	
 	public List<Order> getAllOrders() throws OrderException;
 	
-	public List<Order> getDayWiseOrders(String day) throws OrderException;
+	public List<Order> getDayWiseOrders(int day) throws OrderException;
 	
-	public List<Order> getMonthWiseOrders(String month) throws OrderException;
+	public List<Order> getMonthWiseOrders(int month) throws OrderException;
 	
 	public List<Product> getAllProducts() throws ProductException;
 	
