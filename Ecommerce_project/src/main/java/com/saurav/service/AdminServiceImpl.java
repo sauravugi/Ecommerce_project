@@ -66,7 +66,7 @@ public class AdminServiceImpl implements AdminService {
 		
 		adminRepo.deleteById(opt.get().getAdminId());
 		
-		return "Login Sucessfully with Id "+opt.get().getAdminId();
+		return "Delete Sucessfully with Id "+opt.get().getAdminId();
 	}
 
 	@Override
@@ -114,32 +114,52 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<Product> getAllProducts() throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Product> products = productRepo.findAll();
+		
+		if(products.size()==0) throw new ProductException("NO Product Available...!");
+		
+		return products;
 	}
 
 	@Override
 	public String addProduct(Product product) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(product == null) throw new ProductException("Enter Valid Product Details");
+		
+		productRepo.save(product);
+		
+		return "Sucessfully Added "+product.getProductName();
 	}
 
 	@Override
 	public List<Product> leastQuantityProducts() throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Product> products = productRepo.getLeastProducts();
+		
+		if(products.size()==0) throw new ProductException("NO Product Available...!");
+		
+		return products;
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Customer> customers = customerRepo.findAll();
+		
+		if(customers.size()==0) throw new CustomerException("NO Product Available...!");
+		
+		return customers;
 	}
 
 	@Override
 	public Customer getCustomerDetailsById(Integer id) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Optional<Customer> customer = customerRepo.findById(id);
+		
+		if(customer.isEmpty()) throw new CustomerException("Wrong customer id");
+		
+		return customer.get();
 	}
 
 }

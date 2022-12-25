@@ -20,7 +20,7 @@ public interface CustomerService {
 
 	public List<Product> getAllProducts() throws ProductException;
 	
-	public Order buyProduct(Integer id,Integer productId) throws CustomerException,ProductException;
+	public Order buyProduct(Integer id,Integer productId,int quantity) throws CustomerException,ProductException;
 	
 	public List<Product> getProductsByAmount(int amount) throws ProductException;
 	

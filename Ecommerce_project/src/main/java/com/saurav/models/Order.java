@@ -39,9 +39,8 @@ public class Order {
 	
 	private String productName;
 	
-	@PastOrPresent
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private LocalDate orderdate;
+	
+	private LocalDate orderdate = LocalDate.now();
 	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
