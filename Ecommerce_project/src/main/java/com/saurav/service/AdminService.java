@@ -8,7 +8,7 @@ import com.saurav.exceptions.OrderException;
 import com.saurav.exceptions.ProductException;
 import com.saurav.models.Admin;
 import com.saurav.models.Customer;
-import com.saurav.models.Order;
+import com.saurav.models.Orders;
 import com.saurav.models.Product;
 
 public interface AdminService {
@@ -21,11 +21,11 @@ public interface AdminService {
 	
 	public String updateAdmin(Admin admin) throws AdminException;
 	
-	public List<Order> getAllOrders() throws OrderException;
+	public List<Orders> getAllOrders() throws OrderException;
 	
-	public List<Order> getDayWiseOrders(int day) throws OrderException;
+	public List<Orders> getDayWiseOrders(int day) throws OrderException;
 	
-	public List<Order> getMonthWiseOrders(int month) throws OrderException;
+	public List<Orders> getMonthWiseOrders(int month) throws OrderException;
 	
 	public List<Product> getAllProducts() throws ProductException;
 	

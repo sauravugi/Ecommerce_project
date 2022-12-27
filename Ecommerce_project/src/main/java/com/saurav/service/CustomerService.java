@@ -5,7 +5,7 @@ import java.util.List;
 import com.saurav.exceptions.CustomerException;
 import com.saurav.exceptions.ProductException;
 import com.saurav.models.Customer;
-import com.saurav.models.Order;
+import com.saurav.models.Orders;
 import com.saurav.models.Product;
 
 public interface CustomerService {
@@ -20,9 +20,9 @@ public interface CustomerService {
 
 	public List<Product> getAllProducts() throws ProductException;
 	
-	public Order buyProduct(Integer id,Integer productId,int quantity) throws CustomerException,ProductException;
+	public Orders buyProduct(Integer id,Integer productId,int quantity) throws CustomerException,ProductException;
 	
 	public List<Product> getProductsByAmount(int amount) throws ProductException;
 	
-	public List<Order> getAllOrders(Integer id) throws CustomerException;
+	public List<Orders> getAllOrders(Integer id) throws CustomerException;
 }

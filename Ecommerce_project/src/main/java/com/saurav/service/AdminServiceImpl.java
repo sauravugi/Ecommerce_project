@@ -12,7 +12,7 @@ import com.saurav.exceptions.OrderException;
 import com.saurav.exceptions.ProductException;
 import com.saurav.models.Admin;
 import com.saurav.models.Customer;
-import com.saurav.models.Order;
+import com.saurav.models.Orders;
 import com.saurav.models.Product;
 import com.saurav.repository.AdminRepo;
 import com.saurav.repository.CustomerRepo;
@@ -83,19 +83,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Order> getAllOrders() throws OrderException {
+	public List<Orders> getAllOrders() throws OrderException {
 		
-		List<Order> orders = orderRepo.findAll();
-		
-		if(orders.size()==0) throw new OrderException("Not Any order Available in the list...!");
-		
-		return orders;
-	}
-
-	@Override
-	public List<Order> getDayWiseOrders(int day) throws OrderException {
-		
-		List<Order> orders = orderRepo.getDateWiseOrders(day);
+		List<Orders> orders = orderRepo.findAll();
 		
 		if(orders.size()==0) throw new OrderException("Not Any order Available in the list...!");
 		
@@ -103,9 +93,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Order> getMonthWiseOrders(int month) throws OrderException {
+	public List<Orders> getDayWiseOrders(int day) throws OrderException {
+		
+		List<Orders> orders = orderRepo.getDateWiseOrders(day);
+		
+		if(orders.size()==0) throw new OrderException("Not Any order Available in the list...!");
+		
+		return orders;
+	}
 
-		List<Order> orders = orderRepo.getMonthWiseOrders(month);
+	@Override
+	public List<Orders> getMonthWiseOrders(int month) throws OrderException {
+
+		List<Orders> orders = orderRepo.getMonthWiseOrders(month);
 		
 		if(orders.size()==0) throw new OrderException("Not Any order Available in the list...!");
 		

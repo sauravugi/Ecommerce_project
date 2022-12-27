@@ -87,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Order buyProduct(Integer id, Integer productId,int quantity) throws CustomerException, ProductException {
+	public Orders buyProduct(Integer id, Integer productId,int quantity) throws CustomerException, ProductException {
 
 		Optional<Customer> opt = customerRepo.findById(id);
 		
@@ -105,7 +105,7 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		Integer amount = opt2.get().getPrice()*quantity;
 		
-		Order order = new Order();
+		Orders order = new Orders();
 		order.setCustomerid(id);
 		order.setCustomer(opt.get());
 		order.setProduct(opt2.get());
@@ -118,7 +118,7 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		opt2.get().getOrderList().add(order);
 		
-		Order od = orderRepo.save(order);
+		Orders od = orderRepo.save(order);
 		
 		
 		return od;
@@ -135,7 +135,7 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public List<Order> getAllOrders(Integer id) throws CustomerException {
+	public List<Orders> getAllOrders(Integer id) throws CustomerException {
 		
 		Optional<Customer> opt = customerRepo.findById(id);
 		

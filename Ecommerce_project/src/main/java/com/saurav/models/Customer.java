@@ -1,5 +1,6 @@
 package com.saurav.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -40,6 +41,6 @@ public class Customer {
 	private String role = "USER";
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
-	List<Order> orders;
+	List<Orders> orders = new ArrayList<>();
 
 }

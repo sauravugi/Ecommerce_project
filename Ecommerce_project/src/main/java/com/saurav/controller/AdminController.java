@@ -1,8 +1,10 @@
 package com.saurav.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/saurav")
+@RestController
+@RequestMapping("/saurav")
 public class AdminController {
 
 }

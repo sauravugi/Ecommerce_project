@@ -36,3 +36,4 @@ public class Admin {
 	private String role = "ADMIN";
 
 }
+

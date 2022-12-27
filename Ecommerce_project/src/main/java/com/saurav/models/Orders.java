@@ -8,9 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.PastOrPresent;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -23,29 +21,28 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
-	
+public class Orders {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderId;
-	
+
 	private Integer totalBill;
-	
+
 	private Integer customerid;
-	
+
 	private Integer productid;
-	
+
 	private Integer quantity;
-	
+
 	private String productName;
-	
-	
+
 	private LocalDate orderdate = LocalDate.now();
-	
+
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Customer customer;
-	
+
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Product product;

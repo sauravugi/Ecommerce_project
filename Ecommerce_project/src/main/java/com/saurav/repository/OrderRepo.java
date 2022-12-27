@@ -6,14 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.saurav.exceptions.OrderException;
-import com.saurav.models.Order;
+import com.saurav.models.Orders;
 
-public interface OrderRepo extends JpaRepository<Order, Integer> {
+public interface OrderRepo extends JpaRepository<Orders, Integer> {
 	
 	@Query(value = "Select * from order where DAY(orderdate)= :date", nativeQuery = true)
-	List<Order> getDateWiseOrders(int date) throws OrderException;
+	List<Orders> getDateWiseOrders(int date) throws OrderException;
 	
 	@Query(value = "Select * from order where MONTH(orderdate)= :date", nativeQuery = true)
-	List<Order> getMonthWiseOrders(int date) throws OrderException;
+	List<Orders> getMonthWiseOrders(int date) throws OrderException;
 
 }
