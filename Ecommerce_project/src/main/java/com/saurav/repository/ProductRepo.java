@@ -13,7 +13,9 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 	@Query(value = "select * from product where quantity < 10;" , nativeQuery = true)
 	List<Product> getLeastProducts() throws ProductException;
 	
-	@Query(value = "select * from product where amount <= ?1;" , nativeQuery = true)
-	List<Product> getProductsByAmount(int amount) throws ProductException;
+	List<Product> findByPriceLessThanEqual(Integer amount)throws ProductException;
+	
+//	@Query(value = "SELECT * FROM product WHERE price < :maxPrice", nativeQuery = true)
+//    public List<Product> getProductsWithMaxPrice(Integer maxPrice) throws ProductException;
 
 }

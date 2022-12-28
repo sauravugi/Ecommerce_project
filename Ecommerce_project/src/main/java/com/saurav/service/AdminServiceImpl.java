@@ -93,7 +93,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Orders> getDayWiseOrders(int day) throws OrderException {
+	public List<Orders> getDayWiseOrders(Integer day) throws OrderException {
 		
 		List<Orders> orders = orderRepo.getDateWiseOrders(day);
 		
@@ -103,7 +103,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Orders> getMonthWiseOrders(int month) throws OrderException {
+	public List<Orders> getMonthWiseOrders(Integer month) throws OrderException {
 
 		List<Orders> orders = orderRepo.getMonthWiseOrders(month);
 		

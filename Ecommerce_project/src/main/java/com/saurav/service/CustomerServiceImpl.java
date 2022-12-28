@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.saurav.exceptions.*;
 import com.saurav.models.*;
 import com.saurav.repository.*;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
@@ -87,7 +89,7 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Orders buyProduct(Integer id, Integer productId,int quantity) throws CustomerException, ProductException {
+	public Orders buyProduct(Integer id, Integer productId,Integer quantity) throws CustomerException, ProductException {
 
 		Optional<Customer> opt = customerRepo.findById(id);
 		
@@ -97,13 +99,13 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		if(opt.isEmpty()) throw new ProductException("Wrong Product id...!");
 		
-		if(opt2.get().getQuantity() < quantity) throw new ProductException("Stock is less than your quantity..!");
+		if((int)opt2.get().getQuantity() < (int)quantity) throw new ProductException("Stock is less than your quantity..!");
 		
-		opt2.get().setQuantity((int)opt2.get().getQuantity()-quantity);
+		opt2.get().setQuantity((int)opt2.get().getQuantity()-(int)quantity);
 		
 		productRepo.save(opt2.get());
 		
-		Integer amount = opt2.get().getPrice()*quantity;
+		Integer amount = (int)opt2.get().getPrice()*(int)quantity;
 		
 		Orders order = new Orders();
 		order.setCustomerid(id);
@@ -125,9 +127,9 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public List<Product> getProductsByAmount(int amount) throws ProductException {
+	public List<Product> getProductsByAmount(Integer amount) throws ProductException {
 		
-		List<Product> products = productRepo.getProductsByAmount(amount);
+		List<Product> products = productRepo.findByPriceLessThanEqual(amount);
 		
 		if(products.size()==0) throw new ProductException("NO Product Available...!");
 		

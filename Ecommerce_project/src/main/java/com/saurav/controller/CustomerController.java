@@ -72,7 +72,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customer/{amount}")
-	public ResponseEntity<List<Product>> getProductsByAmountHandler (@PathVariable int amount) throws ProductException{
+	public ResponseEntity<List<Product>> getProductsByAmountHandler (@PathVariable Integer amount) throws ProductException{
 		
 		List<Product> products = customerService.getProductsByAmount(amount);
 		
@@ -89,7 +89,7 @@ public class CustomerController {
 	
 	
 	@PostMapping("/customer/order")
-	public ResponseEntity<Orders> getOrdersHandler (@RequestBody Integer id,Integer productId,int quantity) throws CustomerException, ProductException{
+	public ResponseEntity<Orders> getOrdersHandler (@RequestBody Integer id,Integer productId,Integer quantity) throws CustomerException, ProductException{
 			
 		Orders order = customerService.buyProduct(id, productId, quantity);
 			
