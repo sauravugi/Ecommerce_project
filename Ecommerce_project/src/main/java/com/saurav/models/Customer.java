@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class Customer implements Employee{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -10,10 +10,10 @@ import com.saurav.models.Orders;
 
 public interface OrderRepo extends JpaRepository<Orders, Integer> {
 	
-	@Query(value = "Select * from order where DAY(orderdate)= :date", nativeQuery = true)
+	@Query(value = "Select * from orders where DAY(orderdate)= :date", nativeQuery = true)
 	List<Orders> getDateWiseOrders(Integer date) throws OrderException;
 	
-	@Query(value = "Select * from order where MONTH(orderdate)= :date", nativeQuery = true)
+	@Query(value = "Select * from orders where MONTH(orderdate)= :date", nativeQuery = true)
 	List<Orders> getMonthWiseOrders(Integer date) throws OrderException;
 
 }

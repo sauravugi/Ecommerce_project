@@ -14,10 +14,9 @@ public class MyConfiguration {
 	public SecurityFilterChain securityAutho(HttpSecurity http) throws Exception {
 		
 				http.authorizeHttpRequests(
-				auth -> auth.antMatchers("/saurav/admin/login").hasAuthority("ADMIN")
-				.antMatchers("/saurav/user/**").hasAuthority("USER")
-				.antMatchers("/saurav/customer/{amount}","/saurav/admin/register","/saurav/customer/register","/saurav/admin/product").permitAll()
-				
+				auth -> auth.antMatchers("/saurav/customer/login","/saurav/admin/register","/saurav/customer/register","/saurav/admin/login").permitAll()
+				.antMatchers("/saurav/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/saurav/customer/**").hasAuthority("USER")
 				).csrf().disable().httpBasic();
 		
 		

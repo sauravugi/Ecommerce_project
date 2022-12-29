@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Admin {
+public class Admin implements Employee{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

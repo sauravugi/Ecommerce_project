@@ -88,8 +88,8 @@ public class CustomerController {
 	}
 	
 	
-	@PostMapping("/customer/order")
-	public ResponseEntity<Orders> getOrdersHandler (@RequestBody Integer id,Integer productId,Integer quantity) throws CustomerException, ProductException{
+	@GetMapping("/customer/order/{id}/{productId}/{quantity}")
+	public ResponseEntity<Orders> getOrdersHandler (@PathVariable Integer id,@PathVariable Integer productId,@PathVariable Integer quantity) throws CustomerException, ProductException{
 			
 		Orders order = customerService.buyProduct(id, productId, quantity);
 			
